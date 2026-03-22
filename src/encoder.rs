@@ -42,21 +42,21 @@ impl From<Error> for io::Error {
 /// # Example
 /// ```
 /// # use std::time::SystemTime;
-/// # use litetx::PageChecksum;
+/// # use litepages::PageChecksum;
 /// # let mut w = Vec::new();
 /// # let page = vec![0; 4096];
 /// #
-/// let mut enc = litetx::Encoder::new(&mut w, &litetx::Header{
-///     flags: litetx::HeaderFlags::empty(),
-///     page_size: litetx::PageSize::new(4096).unwrap(),
-///     commit: litetx::PageNum::new(1).unwrap(),
-///     min_txid: litetx::TXID::ONE,
-///     max_txid: litetx::TXID::ONE,
+/// let mut enc = litepages::Encoder::new(&mut w, &litepages::Header{
+///     flags: litepages::HeaderFlags::empty(),
+///     page_size: litepages::PageSize::new(4096).unwrap(),
+///     commit: litepages::PageNum::new(1).unwrap(),
+///     min_txid: litepages::TXID::ONE,
+///     max_txid: litepages::TXID::ONE,
 ///     timestamp: SystemTime::now(),
 ///     pre_apply_checksum: None,
 /// }).expect("encoder");
 ///
-/// let page_num = litetx::PageNum::new(1).unwrap();
+/// let page_num = litepages::PageNum::new(1).unwrap();
 /// enc.encode_page(page_num, &page).expect("encode_page");
 ///
 /// enc.finish(page.page_checksum(page_num)).expect("finish");
